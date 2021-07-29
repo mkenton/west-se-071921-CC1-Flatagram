@@ -8,6 +8,7 @@ let ul = document.querySelector('#fg-comments');
 let form = document.querySelector('#fg-comment-form');
 let likeBttn = document.querySelector('#fg-like-button');
 let span = document.querySelector("#fg-likes");
+let h2 = document.querySelector('#fg-title')
 let likes;
 form.addEventListener('submit', addNewComment) // add event listener to formfor more comments
 likeBttn.addEventListener('click', incrementLikes); ///add event listener to like button 
@@ -24,6 +25,7 @@ function handleData(data) {
     
     likes = data.likes; //start dog off with correct likes from fetched data
     //run deliverable functionality
+    h2.textContent = data.title
     addImage(data);
     addComments(data);
 }
