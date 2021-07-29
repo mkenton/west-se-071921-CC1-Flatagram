@@ -13,6 +13,7 @@ let likes;
 form.addEventListener('submit', addNewComment) // add event listener to formfor more comments
 likeBttn.addEventListener('click', incrementLikes); ///add event listener to like button 
 
+
 // fetch data from server (image, title, likes and comments when page loads
 function getAllData() {
     fetch(imgURL)
@@ -24,6 +25,7 @@ function handleData(data) {
     fetchedDataObject = data; //create js object with data in case we need it to manipulate later
     
     likes = data.likes; //start dog off with correct likes from fetched data
+    span.textContent = `${likes} likes`
     //run deliverable functionality
     h2.textContent = data.title
     addImage(data);
@@ -59,6 +61,18 @@ function incrementLikes() {
     likes = likes + 1
     //console.log(likes)
     span.textContent = `${likes} likes`
+
+    //try patch request 
+    fetchedDataObject.likes = likes;
+    fetch(imgURL,{
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(fetchedDataObject)
+        })
+        .then(resp = resp.json())
+        .then(update => console.log(update))
 
 }
 
