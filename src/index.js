@@ -3,7 +3,6 @@
 //declare reused variables
 const baseURL = 'http://localhost:3000';
 const imgURL = 'http://localhost:3000/images/1';
-const commentsURL = 'http://localhost:3000/comments';
 let fetchedDataObject = {};
 let ul = document.querySelector('#fg-comments');
 let form = document.querySelector('#fg-comment-form');
