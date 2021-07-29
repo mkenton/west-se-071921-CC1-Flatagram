@@ -12,6 +12,7 @@ let h2 = document.querySelector('#fg-title')
 let likes;
 form.addEventListener('submit', addNewComment) // add event listener to formfor more comments
 likeBttn.addEventListener('click', incrementLikes); ///add event listener to like button 
+let i=4 //initial added comment id
 
 
 // fetch data from server (image, title, likes and comments when page loads
@@ -54,6 +55,9 @@ function addNewComment(e) {
     const li = document.createElement('li')
     li.textContent = e.target.comment.value
     ul.append(li)
+
+    console.log(fetchedDataObject)
+
 }
 
 //increase likes when like button is cliekd
@@ -71,7 +75,7 @@ function incrementLikes() {
         },
         body: JSON.stringify(fetchedDataObject)
         })
-        .then(resp = resp.json())
+        .then(resp => resp.json())
         .then(update => console.log(update))
 
 }
